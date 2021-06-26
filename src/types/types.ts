@@ -8,3 +8,10 @@ export interface userProps {
     name?: string;
     id?: number;
 }
+
+export interface columnProps {
+    id: number;
+    title: string;
+    avatar?: string;
+    description: string;
+}
