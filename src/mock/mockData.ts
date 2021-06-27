@@ -4,7 +4,7 @@
  * @Author: windowdotonload
  */
 
-import { userProps, columnProps } from "@/types/types";
+import { userProps, columnProps, ruleProp } from "@/types/types";
 
 export const testUser: userProps = {
     isLogin: true,

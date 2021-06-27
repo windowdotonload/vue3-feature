@@ -15,3 +15,8 @@ export interface columnProps {
     avatar?: string;
     description: string;
 }
+
+export interface ruleProp {
+    type: 'required' | 'email'
+    message: string
+}

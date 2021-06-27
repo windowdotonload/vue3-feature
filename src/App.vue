@@ -2,24 +2,43 @@
 <template>
   <div class="continer">
     <global-header :user="testUser" />
+    <form action="">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">邮箱地址</label>
+        <validate-input :rules="rules" v-model="emailVal"></validate-input>
+      </div>
+    </form>
     <column-list :list="testList" />
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import columnList, { columnProps } from "@/components/columnList.vue";
 import globalHeader, { userProps } from "@/components/globalHeader.vue";
 import { testUser, testData } from "@/mock/mockData";
+import validateInput from "@/components/validateInput.vue";
+import { ruleProp } from "@/types/types";
 
 export default defineComponent({
   components: {
     columnList,
     globalHeader,
+    validateInput,
   },
-  setup() {
+  setup(props) {
+    const rules: ruleProp[] = [
+      { type: "required", message: "请输入信息" },
+      { type: "email", message: "请输入真确的邮箱" },
+    ];
+
+    const emailVal = ref("");
+    const password = ref("");
     return {
       testList: testData,
       testUser: testUser,
+      rules,
+      emailVal,
+      password,
     };
   },
 });
