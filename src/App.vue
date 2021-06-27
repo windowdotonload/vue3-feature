@@ -6,7 +6,6 @@
   </div>
 </template>
 <script lang="ts">
-import "bootstrap/dist/css/bootstrap.min.css";
 import { defineComponent } from "vue";
 import columnList, { columnProps } from "@/components/columnList.vue";
 import globalHeader, { userProps } from "@/components/globalHeader.vue";
@@ -27,4 +26,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+.continer {
+  box-sizing: border-box;
+  padding-left: 30px;
+  padding-right: 30px;
+}
 </style>
