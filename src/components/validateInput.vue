@@ -12,6 +12,7 @@
       :value="inputRef.val"
       @blur="validateInput"
       @input="updateValue"
+      v-bind="$attrs"
     />
     <span v-if="inputRef.error" class="invalid-feedback">
       {{ inputRef.message }}
@@ -25,6 +26,7 @@ import { ruleProp } from "@/types/types";
 type rulesProp = ruleProp[];
 const emailReg = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 export default defineComponent({
+  inheritAttrs: false,
   name: "validateInput",
   props: {
     rules: Array as PropType<rulesProp>,

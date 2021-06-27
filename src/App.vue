@@ -5,7 +5,21 @@
     <form action="">
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">邮箱地址</label>
-        <validate-input :rules="rules" v-model="emailVal"></validate-input>
+        <validate-input
+          :rules="rules"
+          v-model="emailVal"
+          type="text"
+          placeholder="请输入邮箱"
+        ></validate-input>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">密码</label>
+        <validate-input
+          :rules="passwordRules"
+          v-model="password"
+          type="password"
+          placeholder="请输入密码"
+        ></validate-input>
       </div>
     </form>
     <column-list :list="testList" />
@@ -28,7 +42,10 @@ export default defineComponent({
   setup(props) {
     const rules: ruleProp[] = [
       { type: "required", message: "请输入信息" },
-      { type: "email", message: "请输入真确的邮箱" },
+      { type: "email", message: "请输入正确的邮箱" },
+    ];
+    const passwordRules: ruleProp[] = [
+      { type: "required", message: "请输入信息" },
     ];
 
     const emailVal = ref("");
@@ -37,6 +54,7 @@ export default defineComponent({
       testList: testData,
       testUser: testUser,
       rules,
+      passwordRules,
       emailVal,
       password,
     };
