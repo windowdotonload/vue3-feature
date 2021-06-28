@@ -3,6 +3,11 @@
  * @version: 
  * @Author: windowdotonload
 -->
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: windowdotonload
+-->
 <template>
   <div class="validate-input-container pb-3">
     <input
@@ -21,8 +26,9 @@
 </template>
 
 <script lang='ts'>
-import { defineComponent, reactive, PropType } from "vue";
+import { defineComponent, reactive, PropType, onMounted } from "vue";
 import { ruleProp } from "@/types/types";
+import { emitter } from "./validateFrom.vue";
 type rulesProp = ruleProp[];
 const emailReg = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 export default defineComponent({
@@ -55,7 +61,9 @@ export default defineComponent({
           return passed;
         });
         inputRef.error = !allPassed;
+        return allPassed;
       }
+      return true;
     };
 
     const updateValue = (e: KeyboardEvent) => {
@@ -63,6 +71,9 @@ export default defineComponent({
       context.emit("update:modelValue", inputRef.val);
     };
 
+    onMounted(() => {
+      emitter.emit("form-item-created", validateInput);
+    });
     return {
       inputRef,
       validateInput,

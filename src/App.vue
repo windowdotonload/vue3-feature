@@ -1,8 +1,13 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: windowdotonload
+-->
 
 <template>
   <div class="continer">
     <global-header :user="testUser" />
-    <form action="">
+    <validate-form action="" @formSubmit="formsubmit">
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">邮箱地址</label>
         <validate-input
@@ -21,8 +26,8 @@
           placeholder="请输入密码"
         ></validate-input>
       </div>
-    </form>
-    <column-list :list="testList" />
+    </validate-form>
+    <!-- <column-list :list="testList" /> -->
   </div>
 </template>
 <script lang="ts">
@@ -32,12 +37,14 @@ import globalHeader, { userProps } from "@/components/globalHeader.vue";
 import { testUser, testData } from "@/mock/mockData";
 import validateInput from "@/components/validateInput.vue";
 import { ruleProp } from "@/types/types";
+import validateForm from "@/components/validateFrom.vue";
 
 export default defineComponent({
   components: {
     columnList,
     globalHeader,
     validateInput,
+    validateForm,
   },
   setup(props) {
     const rules: ruleProp[] = [
@@ -50,6 +57,11 @@ export default defineComponent({
 
     const emailVal = ref("");
     const password = ref("");
+
+    const formsubmit = (res: boolean) => {
+      console.log(res);
+    };
+
     return {
       testList: testData,
       testUser: testUser,
@@ -57,6 +69,7 @@ export default defineComponent({
       passwordRules,
       emailVal,
       password,
+      formsubmit,
     };
   },
 });
