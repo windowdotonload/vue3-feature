@@ -3,6 +3,11 @@
  * @version: 
  * @Author: windowdotonload
 -->
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: windowdotonload
+-->
 <template>
   <div class="row">
     <div v-for="column in columnList" :key="column.id" class="col-4 mb-4">
@@ -15,7 +20,7 @@
           />
           <h5 class="card-title">{{ column.title }}</h5>
           <p class="card-text text-left">{{ column.description }}</p>
-          <a href="#" class="btn btn-outline-primary">进入专栏</a>
+          <a @click="goDetail" class="btn btn-outline-primary">进入专栏</a>
         </div>
       </div>
     </div>
@@ -25,6 +30,7 @@
 <script lang='ts'>
 import component from "*.vue";
 import { computed, defineComponent, PropType } from "vue";
+import { useRouter } from "vue-router";
 export interface columnProps {
   id: number;
   title: string;
@@ -49,8 +55,15 @@ export default defineComponent({
       });
     });
 
+    const router = useRouter();
+
+    const goDetail = () => {
+      router.push({ name: "column", params: { id: 1 } });
+    };
+
     return {
       columnList,
+      goDetail,
     };
   },
 });

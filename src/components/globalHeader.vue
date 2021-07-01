@@ -3,6 +3,11 @@
  * @version: 
  * @Author: windowdotonload
 -->
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: windowdotonload
+-->
 <template>
   <nav class="navbar navbar-dark bg-primary justify-content-between mb-4 px-4">
     <a class="navbar-brand" href="#">贤者时间专栏</a>
@@ -21,10 +26,10 @@
             ><a href="#" class="dropdown-item">新建文章</a></drop-down-item
           >
           <drop-down-item
-            ><a href="#" class="dropdown-item">新建文章</a></drop-down-item
+            ><a href="#" class="dropdown-item">编辑资料</a></drop-down-item
           >
           <drop-down-item
-            ><a href="#" class="dropdown-item">新建文章</a></drop-down-item
+            ><a href="#" class="dropdown-item">退出登录</a></drop-down-item
           >
         </drop-down>
       </li>

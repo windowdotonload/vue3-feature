@@ -3,6 +3,11 @@
  * @version: 
  * @Author: windowdotonload
 -->
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: windowdotonload
+-->
 <template>
   <div class="home-page">
     <section class="py-5 text-center container">
@@ -25,17 +30,23 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, computed } from "vue";
 import columnList, { columnProps } from "@/components/columnList.vue";
 import { testUser, testData } from "@/mock/mockData";
+import { useStore } from "vuex";
+import { GlobalDataProps } from "@/store/index";
 export default defineComponent({
   name: "Home",
   components: {
     columnList,
   },
   setup() {
+    const store = useStore<GlobalDataProps>();
+    const list = computed(() => {
+      return store.state.columns;
+    });
     return {
-      testList: testData,
+      testList: list,
     };
   },
 });

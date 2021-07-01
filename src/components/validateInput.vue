@@ -8,9 +8,26 @@
  * @version: 
  * @Author: windowdotonload
 -->
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: windowdotonload
+-->
 <template>
   <div class="validate-input-container pb-3">
     <input
+      v-if="tag != 'textarea'"
+      type="text"
+      class="form-control"
+      :class="{ 'is-invalid': inputRef.error }"
+      :value="inputRef.val"
+      @blur="validateInput"
+      @input="updateValue"
+      v-bind="$attrs"
+    />
+    <input
+      v-else
+      rows="10"
       type="text"
       class="form-control"
       :class="{ 'is-invalid': inputRef.error }"
@@ -31,12 +48,17 @@ import { ruleProp } from "@/types/types";
 import { emitter } from "./validateFrom.vue";
 type rulesProp = ruleProp[];
 const emailReg = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+export type tagTypes = "input" | "textarea";
 export default defineComponent({
   inheritAttrs: false,
   name: "validateInput",
   props: {
     rules: Array as PropType<rulesProp>,
     modelValue: String,
+    tag: {
+      type: String as PropType<tagTypes>,
+      default: "input",
+    },
   },
   setup(props, context) {
     const inputRef = reactive({

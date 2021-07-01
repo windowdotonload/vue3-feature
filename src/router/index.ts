@@ -8,10 +8,15 @@
  * @version: 
  * @Author: windowdotonload
  */
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: windowdotonload
+ */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import Home from '@/views/Home.vue'
 import Login from '@/views/Login.vue'
-import Column from '@/views/columnDetail.vue'
+import Column from '@/components/columnDetail.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -28,7 +33,7 @@ const routes: Array<RouteRecordRaw> = [
     path: "/column",
     props: true,
     name: 'column',
-    component: Login,
+    component: Column,
   },
 ]
 
