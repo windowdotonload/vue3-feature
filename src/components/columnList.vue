@@ -8,6 +8,11 @@
  * @version: 
  * @Author: windowdotonload
 -->
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: windowdotonload
+-->
 <template>
   <div class="row">
     <div v-for="column in columnList" :key="column.id" class="col-4 mb-4">
@@ -31,6 +36,7 @@
 import component from "*.vue";
 import { computed, defineComponent, PropType } from "vue";
 import { useRouter } from "vue-router";
+import { SetupContext } from "vue";
 export interface columnProps {
   id: number;
   title: string;
@@ -45,7 +51,7 @@ export default defineComponent({
       required: true,
     },
   },
-  setup(props) {
+  setup(props, context) {
     const columnList = computed(() => {
       return props.list.map((item) => {
         if (!item.avatar) {
